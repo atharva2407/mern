@@ -1,0 +1,153 @@
+// Write a JavaScript function that Print Sum of Even Place and Odd Place Digit
+
+// E.g num = 2914
+// O/p Even Place (9+4)
+// Odd Place 2+1
+
+function EvenOdd(num) {
+  var numString = num.toString();
+  var evenSum = 0;
+  var oddSum = 0;
+  for (var i = 0; i < numString.length; i++) {
+    var digit = parseInt(numString[i]);
+    if ((i + 1) % 2 === 0) {
+      evenSum += digit; 
+    } else {
+      oddSum += digit; 
+    }
+  }
+  console.log("Even Sum:", evenSum);
+  console.log("Odd Sum:", oddSum);
+}
+
+
+EvenOdd(2914);
+Even Sum: 13
+Odd Sum: 3
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+// 2.Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word into upper case.
+// Example string : ‘learn javascript from brain mentors’
+// Expected Output : ‘Learn Javascript From Brain Mentors
+
+
+
+function capital(input) {
+    var w = input.split(' ');
+    var capW = [];
+    w.forEach(element => {
+       capW.push(element[0].toUpperCase() + element.slice(1, element.length)); 
+    });
+    return capW.join(' ');
+}
+
+
+
+capital('learn javascript from brain mentors');
+'Learn Javascript From Brain Mentors'
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+// Write a JS Function to validate Phone Number 
+// Only number and must be 10 digit long
+
+function validatePhoneNumber(phoneNumber) {
+  if (!phoneNumber.match(/^\d+$/)) {
+    return false;
+  }
+  if (phoneNumber.length !== 10) {
+    return false;
+  }
+  return true;
+}
+
+undefined
+var phoneNumber = "1234567890";
+var isPhoneNumberValid = validatePhoneNumber(phoneNumber);
+if (isPhoneNumberValid) {
+  console.log("phone number is valid.");
+} else {
+  console.log("phone number is invalid.");
+}
+
+VM976:4 phone number is valid.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+// Write a JS Function to validate Email Address
+// Must contains @
+// Must ends with .com/.org/.edu
+
+function validateEmailAddress(email) {
+  if (email.indexOf('@') === -1) {
+    return false;
+  }
+  const validDomains = ['.com', '.org', '.edu'];
+  let validDomain = false;
+  for (let i = 0; i < validDomains.length; i++) {
+    if (email.endsWith(validDomains[i])) {
+      validDomain = true;
+      break;
+    }
+  }
+  return validDomain;
+}
+
+undefined
+const email = 'test@example.com';
+console.log(validateEmailAddress(email));
+
+VM1103:2 true
+undefined
+const email = 'example.org';
+console.log(validateEmailAddress(email)); 
+VM1115:2 false
+undefined
+const email = 'test@example.net';
+console.log(validateEmailAddress(email));
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+// Write a JS Function to find the occurrence of each character in JS
+// Input : “brain mentors”
+// O/P : b 1
+// r 2
+// A 1
+// I 1
+// N 2
+// M 1
+// E 1
+// T 1
+// O 1
+// S 1
+
+
+
+function countCharacters(str) {
+  var charCount = {};
+  for (let i = 0; i < str.length; i++) {
+    var char = str[i].toLowerCase(); 
+    if (/[a-z]/i.test(char)) {
+      if (charCount[char]) {
+        charCount[char]++; 
+      } else {
+        charCount[char] = 1; 
+      }
+    }
+  }
+  for (var char in charCount) {
+    console.log(char, charCount[char]);
+  }
+}
+var input = "Ashutosh Maurya";
+countCharacters(input);
+VM1215:14 a 3
+VM1215:14 s 2
+VM1215:14 h 2
+VM1215:14 u 2
+VM1215:14 t 1
+VM1215:14 o 1
+VM1215:14 m 1
+VM1215:14 r 1
+VM1215:14 y 1
