@@ -1,0 +1,169 @@
+// 1.Write a function calculate that takes three arugments from the user, say num1 , num2, and operation(1==add, 2==subtract, 
+// 3==multiply, 4==divide ).Don`t use switch statement or if else statements
+ 
+// 1.add,
+// 2.subtract,
+// 3.multiply,
+// 4.divide 
+
+// write the calc function for all the operations
+
+
+
+function calculate(num1, num2, ope) {
+  var operations = [
+    (a, b) => a + b,
+    (a, b) => a - b,
+    (a, b) => a * b,
+    (a, b) => a / b,
+  ];
+  var selectedOpe = operations[ope - 1];
+  if (selectedOpe) {
+    return selectedOpe(num1, num2);
+  } else {
+        return'Invalid operation!';
+  }
+}
+console.log(calculate(8, 5, 1));
+console.log(calculate(8, 2, 2));
+console.log(calculate(12, 1, 4));
+console.log(calculate(15, 8, 5));
+VM1445:15 13
+VM1445:16 6
+VM1445:17 12
+VM1445:18 Invalid operation!
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+// 2 . Create a function Named Triangle which takes 3 parameters, say A, B and C denoting the 3 sides of a triangle.
+// Use Callback function, create a method to check if the triangle is Equilateral or not.
+
+
+// Output:
+// "true" if the triangle is equilateral and "false" if its not.
+
+
+function Triangle(a, b, c) {
+  var isEquilateral = (a === b && b === c);
+  return () => {
+    return isEquilateral;
+  };
+}
+var isEquilateralTriangle = Triangle(3, 3, 3)();
+console.log(isEquilateralTriangle); 
+
+var isEquilateralTriangl = Triangle(2, 3, 4)();
+console.log(isEquilateralTriangl); 
+VM1624:8 true
+VM1624:11 false
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+// 3.Given two strings, return true if they are anagrams of one another
+
+// For example: Mary is an anagram of Army
+
+function areAnagrams(str1, str2) {
+    
+  str1 = str1.toLowerCase().replace(/\s/g, '');
+  str2 = str2.toLowerCase().replace(/\s/g, '');
+    
+  str1 = str1.split('').sort().join('');
+  str2 = str2.split('').sort().join('');
+    
+  return str1 === str2;
+}
+
+console.log(areAnagrams('Mary', 'Army')); 
+VM1665:12 true
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+// 4. Create a function Employee, having id, name, basic_Salary as arguments.
+
+// Compute HRA, DA, TA, GS, NS.
+
+// HRA is 30% of Basic Salary.
+// DA is 10% of Basic Salary.
+// TA is 20% of Basic Salary.
+
+// GS = Basic Salary + HRA + DA + TA;
+
+// TAX DEDUCTION is 10% of GS.
+
+// NS = GS - TAX DEDUCTION.
+
+// NOte : Use Basic Salary in Lexical Scope 
+// Print salary slip of the employee.  
+
+
+function Employee(id, name, basicSalary) {
+  function HRA(){
+      return HRA = 0.3 * basicSalary;
+  }
+  function DA(){
+      return DA = 0.1 * basicSalary;
+  }
+  function TA(){
+      return TA = 0.2 * basicSalary;
+  }
+  function GS(){
+      return GS = basicSalary + HRA + DA + TA;
+  }
+  function taxDeduction(){
+      return taxDeduction = 0.1 * GS;
+  }
+  function NS(){
+      return NS = GS - taxDeduction;
+  }
+  console.log("Employee ID:", id);
+  console.log("Employee Name:", name);
+  console.log("Basic Salary:", basicSalary);
+  console.log("HRA:", HRA());
+  console.log("DA:", DA());
+  console.log("TA:", TA());
+  console.log("Gross Salary:", GS());
+  console.log("Tax Deduction:", taxDeduction());
+  console.log("Net Salary:", NS());
+}
+Employee(100069, "ashutosh", 50000);
+
+VM2183:20 Employee ID: 100069
+VM2183:21 Employee Name: ashutosh
+VM2183:22 Basic Salary: 50000
+VM2183:23 HRA: 15000
+VM2183:24 DA: 5000
+VM2183:25 TA: 10000
+VM2183:26 Gross Salary: 80000
+VM2183:27 Tax Deduction: 8000
+VM2183:28 Net Salary: 72000
+undefined
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+// 15. Write a function to find the maximum and minimum elements in an array.
+// arr = [10,3,15,-1,9,6]
+
+// output = maxno. : 15
+// 			minno. : -1
+
+
+function findMaxMin(arr) {
+  var max = arr[0];
+  var min = arr[0];
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    } else if (arr[i] < min) {
+      min = arr[i];
+    }
+  }
+  return [max, min];
+}
+
+var arr = [10, 3, 15, -1, 9, 6];
+var [max, min] = findMaxMin(arr);
+console.log("maxno. :", max);
+console.log("minno. :", min);
+VM2216:16 maxno. : 15
+VM2216:17 minno. : -1
